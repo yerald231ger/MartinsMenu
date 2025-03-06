@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Martin's Tacos - Menú</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .menu-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 600px;
+        }
+
+        .menu-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px 0;
+        }
+
+        .menu-header svg {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .logo-text {
+            font-family: 'Arial Black', sans-serif;
+            font-weight: bold;
+        }
+
+        /* Tabs styling */
+        .tabs {
+            display: flex;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 1px;
+        }
+
+        .tab {
+            padding: 10px 20px;
+            cursor: pointer;
+            margin-right: 5px;
+            border-radius: 5px 5px 0 0;
+            background-color: #f8f8f8;
+            border: 2px solid #ddd;
+            border-bottom: none;
+            color: #666;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .tab:hover {
+            background-color: #e8e8e8;
+        }
+
+        .tab.active {
+            background-color: white;
+            color: #4a4a4a;
+            border-color: #4a4a4a;
+            border-bottom: 2px solid white;
+            margin-bottom: -2px;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .menu-items {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .menu-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            border-radius: 5px;
+            color: white;
+            font-weight: bold;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .menu-item:hover {
+            transform: rotate(-2deg);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .menu-item.arrachera { background-color: #9e3b5e; }
+        .menu-item.ribeye { background-color: #c4a845; }
+        .menu-item.chorizo { background-color: #2c4b8c; }
+        .menu-item.combinado { background-color: #c17f59; }
+        .menu-item.harina { background-color: #3c584f; }
+        .menu-item.volcan { background-color: #8c7b8e; }
+        .menu-item.indio { background-color: #2c4b8c; }
+        .menu-item.quesadilla-maiz { background-color: #4c7fa3; }
+        .menu-item.quesadilla { background-color: #9e3b5e; }
+        .menu-item.gringa { background-color: #8b2331; }
+        .menu-item.charros { background-color: #c4a845; }
+        .menu-item.bebidas { background-color: #333; }
+
+        .price {
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+<body>
+    <div class="menu-container">
+        <div class="menu-header">
+            <svg width="400" height="120" viewBox="0 0 400 120">
+                <!-- Taco Illustration -->
+                <g transform="translate(20,10) scale(0.8)">
+                    <!-- Tortilla -->
+                    <path d="M40,80 Q60,40 80,80" stroke="#E8B96F" stroke-width="8" fill="none"/>
+                    <!-- Meat -->
+                    <path d="M45,75 Q60,45 75,75" stroke="#8B4513" stroke-width="6" fill="none"/>
+                    <!-- Lettuce -->
+                    <path d="M48,70 Q60,50 72,70" stroke="#228B22" stroke-width="4" fill="none"/>
+                    <!-- Tomato -->
+                    <circle cx="55" cy="65" r="3" fill="#FF6347"/>
+                    <circle cx="65" cy="65" r="3" fill="#FF6347"/>
+                    <!-- Cheese -->
+                    <path d="M50,68 Q60,55 70,68" stroke="#FFD700" stroke-width="3" fill="none"/>
+                </g>
+                
+                <!-- Martin's Text -->
+                <text x="120" y="65" class="logo-text" fill="#4a4a4a" font-size="40">
+                    <tspan>Martin's</tspan>
+                </text>
+                
+                <!-- Tacos Text with gradient -->
+                <defs>
+                    <linearGradient id="titleGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" style="stop-color:#c17f59"/>
+                        <stop offset="50%" style="stop-color:#9e3b5e"/>
+                        <stop offset="100%" style="stop-color:#c4a845"/>
+                    </linearGradient>
+                </defs>
+                <text x="230" y="65" class="logo-text" fill="url(#titleGradient)" font-size="40">
+                    <tspan>Tacos</tspan>
+                </text>
+            </svg>
+        </div>
+
+        <div class="tabs">
+            <div class="tab active" onclick="openTab(event, 'tacos')">Tacos</div>
+            <div class="tab" onclick="openTab(event, 'complementos')">Complementos</div>
+            <div class="tab" onclick="openTab(event, 'bebidas')">Bebidas</div>
+        </div>
+
+        <div id="tacos" class="tab-content active">
+            <div class="menu-items">
+                <div class="menu-item arrachera">
+                    <span>Taco Arrachera</span>
+                    <span class="price">$20.00</span>
+                </div>
+                <div class="menu-item ribeye">
+                    <span>Taco Rib Eye</span>
+                    <span class="price">$20.00</span>
+                </div>
+                <div class="menu-item chorizo">
+                    <span>Taco Chorizo</span>
+                    <span class="price">$20.00</span>
+                </div>
+                <div class="menu-item combinado">
+                    <span>Taco Combinado</span>
+                    <span class="price">$25.00</span>
+                </div>
+                <div class="menu-item harina">
+                    <span>Taco Harina</span>
+                    <span class="price">$25.00</span>
+                </div>
+            </div>
+        </div>
+
+        <div id="complementos" class="tab-content">
+            <div class="menu-items">
+                <div class="menu-item volcan">
+                    <span>Volcán</span>
+                    <span class="price">$40.00</span>
+                </div>
+                <div class="menu-item indio">
+                    <span>Indio</span>
+                    <span class="price">$40.00</span>
+                </div>
+                <div class="menu-item quesadilla-maiz">
+                    <span>Quesadilla de Maíz</span>
+                    <span class="price">$55.00</span>
+                </div>
+                <div class="menu-item quesadilla">
+                    <span>Quesadilla</span>
+                    <span class="price">$40.00</span>
+                </div>
+                <div class="menu-item gringa">
+                    <span>Gringa</span>
+                    <span class="price">$60.00</span>
+                </div>
+                <div class="menu-item charros">
+                    <span>Frijoles Charros</span>
+                    <span class="price">$30.00</span>
+                </div>
+            </div>
+        </div>
+
+        <div id="bebidas" class="tab-content">
+            <div class="menu-items">
+                <div class="menu-item bebidas">
+                    <span>Refrescos</span>
+                    <span class="price">$20.00</span>
+                </div>
+                <div class="menu-item bebidas">
+                    <span>Aguas (1/2 Litro)</span>
+                    <span class="price">$30.00</span>
+                </div>
+                <div class="menu-item bebidas">
+                    <span>Aguas (Litro)</span>
+                    <span class="price">$60.00</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openTab(evt, tabName) {
+            // Hide all tab content
+            var tabContents = document.getElementsByClassName("tab-content");
+            for (var i = 0; i < tabContents.length; i++) {
+                tabContents[i].classList.remove("active");
+            }
+
+            // Remove active class from all tabs
+            var tabs = document.getElementsByClassName("tab");
+            for (var i = 0; i < tabs.length; i++) {
+                tabs[i].classList.remove("active");
+            }
+
+            // Show the selected tab content and mark the tab as active
+            document.getElementById(tabName).classList.add("active");
+            evt.currentTarget.classList.add("active");
+        }
+    </script>
+</body>
+</html>
